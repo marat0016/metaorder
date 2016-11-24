@@ -9,7 +9,6 @@ buildscript {
 
 def appName = "greeting-app"
 def appVersion = "0.2.2"
-def buildVersion = "dev"
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -18,9 +17,8 @@ apply plugin: 'war'
 
 war {
     baseName = appName
-    version = buildVersion
+    version = appVersion
 }
-
 repositories {
     mavenCentral()
 }
@@ -29,43 +27,32 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 def v = [
-    spring: '', // todo
-    hibernate: '4.3.5.Final', // todo: care
-    postgre: '9.4.1207.jre7'
+        security: '4.2.0.RELEASE',
+        thy_security: '2.1.2.RELEASE'
 ]
 
 dependencies {
     compile(
-        "org.springframework.boot:spring-boot-starter-thymeleaf",
-        "org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE",
-        "org.hibernate:hibernate-core:${v.hibernate}",
-        "org.hibernate:hibernate-entitymanager:${v.hibernate}",
-        "commons-dbcp:commons-dbcp:1.4",
-        "org.postgresql:postgresql:${v.postgre}",
-        "org.springframework.boot:spring-boot-devtools",
-        "org.springframework:spring-context",
-        "org.springframework:spring-core",
-        "org.springframework:spring-tx",
-        "org.springframework:spring-webmvc",
-        "org.springframework:spring-jdbc",
-        "org.springframework:spring-orm",
+        // Spring
+            "org.springframework:spring-context",
+            "org.springframework:spring-core",
+            "org.springframework:spring-webmvc",
+            "org.springframework.boot:spring-boot-devtools",
+            //"org.springframework.security:spring-security-web:${v.security}",
+            //"org.springframework.security:spring-security-config:${v.security}",
+            "org.springframework.boot:spring-boot-starter-thymeleaf",
+            //"org.thymeleaf.extras:thymeleaf-extras-springsecurity4:${v.thy_security}",
+        // DB
+            "org.springframework:spring-tx",
+            "org.springframework:spring-jdbc",
+            "org.hsqldb:hsqldb",
+            "org.eclipse.persistence:javax.persistence:2.1.1",
+        // Logging
+            "org.slf4j:jcl-over-slf4j",
+            "ch.qos.logback:logback-classic",
+            "org.slf4j:jcl-over-slf4j"
 
-        "javax.servlet:javax.servlet-api:3.1.0",
-        "org.javassist:javassist:3.15.0-GA",
-
-        "javax.inject:javax.inject:1",
-        "org.hsqldb:hsqldb",
-        "org.slf4j:jcl-over-slf4j",
-        "ch.qos.logback:logback-classic",
-        "org.eclipse.persistence:javax.persistence:2.1.1",
-        "org.slf4j:jcl-over-slf4j"
     )
-
-    // providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
-
-    /*runTime(
-        "org.slf4j:slf4j-api"
-    )*/
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 

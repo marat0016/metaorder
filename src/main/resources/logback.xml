@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-    <property name="LOGS_HOME" value="../logs"/>
+    <property name="LOGS_HOME" value="${catalina.base}/logs"/>
     <property name="APP_NAME" value="greeting-app"/>
 
     <appender name="FILE-AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">

@@ -1,32 +1,18 @@
 package g_app.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "Users")
 public class User {
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "password")
+    String name;
     String password;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    // Todo: in separate class
+    public boolean isValidUser() {
+        // todo more checks
+        return name.length() > 4 && password.length() > 8;
     }
 
     public String getName() {
@@ -43,10 +29,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "User[id=" + id + ", name=" + name + "]";
     }
 }

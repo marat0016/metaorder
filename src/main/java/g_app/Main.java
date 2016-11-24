@@ -6,24 +6,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.util.Map;
+import java.util.Arrays;
 
+// @EnableWebMvc
 @SpringBootApplication
 public class Main extends SpringBootServletInitializer {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        /*Map<String, String> vars = System.getenv();
-        if (!vars.containsKey("catalina.base") && !vars.containsKey("catalina_base")) {
-            LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
-            context.putProperty("LOGS_HOME", System.getProperty("user.dir"));
-        }*/
-        return application.sources(Main.class);
-    }
-
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(Main.class, args);
+        ApplicationContext ctx = SpringApplication.run(Main.class, args);
     }
 
 }

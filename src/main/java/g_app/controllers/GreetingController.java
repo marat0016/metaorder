@@ -8,24 +8,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import static g_app.controllers.SignInController.USERNAME_COOKIE_KEY;
+import static g_app.controllers.entrepreneures.SignInController.USERNAME_COOKIE_KEY;
 
 @Controller
 public class GreetingController {
     Map<Range<Integer>, String> partsOfDay = new HashMap<>();
     private static final Logger log = LoggerFactory.getLogger(GreetingController.class);
 
-
-    @GetMapping("/")
-    public String redirectToGreetingPage() {
-        return "redirect:/welcome";
-    }
 
     @GetMapping("/welcome")
     public String greetingPage(@CookieValue(value = USERNAME_COOKIE_KEY, defaultValue = "") String username, Model model) {

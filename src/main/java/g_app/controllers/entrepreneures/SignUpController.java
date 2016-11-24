@@ -1,6 +1,6 @@
-package g_app.controllers;
+package g_app.controllers.entrepreneures;
 
-import g_app.dao.IUserDao;
+import g_app.dao.UserDao;
 import g_app.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,25 +19,25 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static g_app.controllers.SignInController.USERNAME_COOKIE_KEY;
+import static g_app.controllers.entrepreneures.SignInController.USERNAME_COOKIE_KEY;
 
 @Controller
 public class
 
 SignUpController {
-    IUserDao IUserDao;
+    UserDao userDao;
 
-    @GetMapping("/sign-up")
+    @GetMapping("/sign-up-entrepreneur")
     public String registrationForm(@CookieValue(value = USERNAME_COOKIE_KEY, defaultValue = "") String username, Model model) {
         if (username.isEmpty()) {
             model.addAttribute("user", new User());
-            return "sign-up";
+            return "sign-up-entrepreneur";
         } else {
             return "redirect:/welcome";
         }
     }
 
-    @PostMapping("/sign-up")
+    @PostMapping("/sign-up-entrepreneur")
     public String registrationSubmit(HttpServletResponse response, @ModelAttribute User user, Model model) {
         Map<String, String> errors = new HashMap<>();
         if (isInvalidUsername(user.getName())) {
@@ -49,23 +49,23 @@ SignUpController {
         }
         if (errors.size() > 0) {
             model.addAllAttributes(errors);
-            return "sign-up";
+            return "sign-up-entrepreneur";
         }
 
-        if (IUserDao.isUserRegistered(user.getName())) {
+        if (userDao.isUserRegistered(user.getName())) {
             model.addAttribute("name_busy", "User with this name is already registered");
-            return "sign-up";
+            return "sign-up-entrepreneur";
         } else {
-            IUserDao.createUser(user);
+            userDao.createUser(user);
             response.addCookie(new Cookie(USERNAME_COOKIE_KEY, user.getName()));
             return "redirect:/welcome";
         }
     }
 
     @Autowired
-    public void setIUserDao(IUserDao IUserDao) {
-        Assert.notNull(IUserDao);
-        this.IUserDao = IUserDao;
+    public void setUserDao(UserDao userDao) {
+        Assert.notNull(userDao);
+        this.userDao = userDao;
     }
 
     private boolean isInvalidUsername(String username) {

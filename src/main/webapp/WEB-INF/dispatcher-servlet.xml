@@ -1,62 +1,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-                            http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
-                            http://www.springframework.org/schema/jdbc
-                            http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
-                            http://springframework.org/schema/mvc
-                            http://schema.spring.io/mvc/spring-mvc-4.1.xsd
-                            http://www.springframework.org/schema/context
-                            http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/cache"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                                                    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+                                                    http://www.springframework.org/schema/jdbc
+                                                    http://www.springframework.org/schema/jdbc/spring-jdbc-4.1.xsd
+                                                    http://www.springframework.org/schema/context
+                                                    http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-
-    <context:component-scan base-package="g_app, g_app.model, g_app.dao, g_app.configs" />
-    <!--<context:component-scan base-package="g_app">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-    </context:component-scan>-->
-    <!--<context:component-scan base-package="g_app" use-default-filters="false">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-    </context:component-scan>-->
-
-    <mvc:annotation-driven />
-    <tx:annotation-driven />
-
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">-->
-        <!--<property name="driverClassName" value="org.postgresql.Driver" />-->
-        <!--<property name="url" value="jdbc:postgresql://localhost:5432/metaorder" />-->
-        <!--<property name="username" value="metaorder" />-->
-        <!--<property name="password" value="almar18" />-->
-    <!--</bean>-->
-
-    <!--&lt;!&ndash; Hibernate 4 SessionFactory Bean definition &ndash;&gt;-->
-    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
-        <!--<property name="dataSource" ref="dataSource" />-->
-        <!--<property name="annotatedClasses">-->
-            <!--<list>-->
-                <!--<value>com.spring.demo.model.User</value>-->
-            <!--</list>-->
-        <!--</property>-->
-        <!--<property name="hibernateProperties">-->
-            <!--<props>-->
-                <!--<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>-->
-                <!--<prop key="hibernate.show_sql">true</prop>-->
-            <!--</props>-->
-        <!--</property>-->
-    <!--</bean>-->
-
-    <!--<bean id="userDao" class="g_app.dao.UserDao" depends-on="sessionFactory" >-->
-        <!--<property name="sessionFactory" ref="sessionFactory" />-->
-    <!--</bean>-->
-
-    <!--<bean id="signInController" class="g_app.controllers.SignInController" depends-on="userDao" >-->
-        <!--<property name="userDao" ref="userDao" />-->
-    <!--</bean>-->
-
-	<!--<bean id="signUpController" class="g_app.controllers.SignUpController" depends-on="userDao" >-->
-		<!--<property name="userDao" ref="userDao" />-->
-	<!--</bean>-->
+	<context:component-scan base-package="g_app, g_app.model" />
+	<mvc:annotation-driven></mvc:annotation-driven>
 
 </beans>
