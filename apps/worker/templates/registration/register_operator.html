@@ -1,0 +1,18 @@
+{% extends 'worker/layouts/std_head_foot.html' %}
+
+{% block content %}
+
+{% if form.errors %}
+<!--{% for key, value in form.errors.items %}
+<p>{{ value }}</p>
+{% endfor %}-->
+{% endif %}
+
+<form method="POST" action="{% url 'register_operator_submit' %}" class="form-horizontal">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ oper_form.as_p }}
+    <button type="submit" class="btn btn-default">Зарегистрироваться</button>  
+</form>
+
+{% endblock %}

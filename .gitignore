@@ -1,3 +1,21 @@
+
+## IDE
+.idea/*
+.vscode/*
+
+
+## Python
+*.pyc
+__pycache__
+djenv
+menv
+db.sqlite3
+.DS_Store
+
+
+
+
+# Java
 *.class
 
 # Mobile Tools for Java (J2ME)

@@ -1,0 +1,14 @@
+{% extends 'worker/layouts/std_head_foot.html' %}
+
+{% block content %}
+    {% for order in orders %}
+        <div class="mb4">
+            <p><b>Author:</b> {{ order.author }}</p>
+            <p><b>Posted on:</b> {{ order.post_date }}</p>
+            <p><b>Status:</b> {{ order.status }}</p>
+            <p><b>Text:</b></p>
+            <p>{{ order.text|linebreaksbr }}</p>
+            <p><a href="{% url 'order' order_id=order.id %}">Read more</a></p>
+        </div>
+    {% endfor %}
+{% endblock content %}

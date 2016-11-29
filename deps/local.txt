@@ -1,0 +1,17 @@
+# Local requirements file.
+# Place items here that should ONLY be installed in DEVELOPMENT environments.
+
+# include the base requirements file
+-r _base.txt
+
+django-debug-toolbar
+django-extensions
+
+# For easy deployments
+# Mb http://docs.fabfile.org/en/latest/ ?
+# whitenoise
+# fabric
+
+# For running tests
+coverage
+django-discover-runner==0.4
