@@ -7,5 +7,5 @@ from django.shortcuts import redirect
 from django.utils import timezone
 
 
-def boss(request):
-    return render(request, 'boss/index.html', {})
+def index(request):
+    return render(request, 'chief/index.html', {})

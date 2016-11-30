@@ -18,8 +18,8 @@ class Migration(migrations.Migration):
             name='Order',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('author', models.CharField(max_length=512)),
-                ('email', models.EmailField(max_length=254)),
+                ('author', models.CharField(max_length=512, blank=False)),
+                ('email', models.EmailField(max_length=254, blank=False)),
                 ('text', models.TextField()),
                 ('post_date', models.DateTimeField(default=django.utils.timezone.now)),
                 ('status', models.CharField(max_length=128)),

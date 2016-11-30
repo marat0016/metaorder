@@ -4,11 +4,8 @@ from metaord import settings
 
 
 urlpatterns = [
-    # Examples:
-    # url(r'^$', 'worker.views.home', name='home'),
-
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('boss.urls')),
+    url(r'', include('chief.urls')),
     url(r'', include('worker.urls')),
 ]
 

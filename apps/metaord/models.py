@@ -3,8 +3,8 @@ from django.utils import timezone
 
 
 class Order(models.Model):
-    author = models.CharField(max_length=512)
-    email = models.EmailField()
+    author = models.CharField(max_length=512, blank=False)
+    email = models.EmailField(blank=False)
     text = models.TextField()
     post_date = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=128)

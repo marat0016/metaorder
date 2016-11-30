@@ -2,14 +2,7 @@ from django.contrib.auth.models import User, Group, Permission
 from django.shortcuts import get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from worker.models import Operator
-from metaord.models import Order # todo .
-
-
-def has_model_permissions(entity, model, perms, app):
-    for p in perms:
-        if not entity.has_perm("%s.%s_%s" % (app, p, model.__name__ )):
-            return False
-        return True
+from metaord.models import Order
 
 
 class Groups:
@@ -38,7 +31,7 @@ class Permissions:
             return perm
         else:
             content_type = ContentType.objects.get_for_model(Order)
-            return Permission.objects.create(codename='change_order_status', # mb ADD worker
+            return Permission.objects.create(codename='change_order_status',
                                             name='Can change order status',
                                             content_type=content_type)
 

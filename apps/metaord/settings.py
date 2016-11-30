@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['kell18.pythonanywhere.com']
 
 INSTALLED_APPS = (
     'metaord',
-    'boss',
+    'chief',
     'worker',
     'django.contrib.admin',
     'django.contrib.auth',
