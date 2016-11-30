@@ -1,5 +1,6 @@
 {% extends 'worker/layouts/std_head_foot.html' %}
 
 {% block content %}
-    {% include "metaord/fragments/order.html" with order=order %}
+    {% url 'worker:orders_list' as list_url %}
+    {% include "metaord/fragments/order.html" with order=object list_url=list_url udp_status_pref='/worker/orders/upd_status' %}
 {% endblock content %}

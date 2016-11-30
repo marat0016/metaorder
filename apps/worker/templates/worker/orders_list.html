@@ -1,5 +1,5 @@
 {% extends 'worker/layouts/std_head_foot.html' %}
 
 {% block content %}
-    {% include "metaord/fragments/orders_list.html" with orders=orders %}
+    {% include "metaord/fragments/orders_list.html" with orders=object_list detail_url_pref="/worker/orders" %}
 {% endblock content %}

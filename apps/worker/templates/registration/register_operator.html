@@ -8,7 +8,7 @@
 {% endfor %}-->
 {% endif %}
 
-<form method="POST" action="{% url 'register_operator_submit' %}" class="form-horizontal">
+<form method="POST" action="{% url 'worker:register_operator_submit' %}" class="form-horizontal">
     {% csrf_token %}
     {{ user_form.as_p }}
     {{ oper_form.as_p }}

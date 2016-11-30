@@ -6,6 +6,6 @@
         <p><b>Status:</b> {{ order.status }}</p>
         <p><b>Text:</b></p>
         <p>{{ order.text|linebreaksbr }}</p>
-        <p><a href="{% url 'order' order_id=order.id %}">Read more</a></p>
+        <p><a href="{{ detail_url_pref }}/{{ order.pk }}">Read more</a></p>
     </div>
 {% endfor %}

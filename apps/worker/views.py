@@ -1,31 +1,47 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import auth
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_GET, require_POST
 from django.shortcuts import redirect
 from django.utils import timezone
 from metaord.utils.auth import Permissions, Groups
-from metaord.utils.decorators import group_required
+from metaord.utils.decorators import group_required, class_decorator
 from metaord.models import Order
-from .forms import UserForm, OperatorForm
+from .forms import *
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, FormView
+from metaord.models import Order
 
 
-login_url = '/login/'
+login_url = '/login/' # todo: reverse
 
-@group_required('worker', login_url=login_url)
+@group_required('worker', 'chief', login_url=login_url)
 def index(request):
     return render(request, 'worker/index.html', {})
 
-@group_required('worker', login_url=login_url)
-def orders_list(request):
-    orders = Order.objects.filter(post_date__lte=timezone.now()).order_by('post_date')
-    return render(request, 'worker/orders_list.html', {'orders': orders})
+@class_decorator(group_required('worker', 'chief', login_url=login_url))
+class OrderList(ListView):
+    model = Order
 
-@group_required('worker', login_url=login_url)
-def order(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
-    return render(request, 'worker/order.html', {'order': order})
+@class_decorator(group_required('worker', 'chief', login_url=login_url))
+class OrderDetail(DetailView):
+    model = Order
+
+@class_decorator(group_required('worker', 'chief', login_url=login_url))
+class OrderUpdate(FormView):
+    form_class = OrderStatusForm
+    success_url = "/workers/users/" # todo: msg to user
+
+    def form_valid(self, form):        
+        Order.objects.filter(pk=self.kwargs["pk"]).update(status=form.cleaned_data['new_status']) # todo
+        return redirect(self.success_url)
+    
+    def get_context_data(self, **kwargs):
+        context = super(OrderUpdate, self).get_context_data(**kwargs)
+        context['pk'] = self.kwargs["pk"]
+        return context
+
 
 @require_GET
 @group_required('worker', login_url=login_url)

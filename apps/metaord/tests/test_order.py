@@ -4,7 +4,7 @@ from metaord.models import Order
 
 class OrderTestCase(TestCase):
     author1 = 'lion'
-    email1 = 'a@b.ru'
+    email1 = 'lion@qwevhj.ru'
 
     def setUp(self):
         Order.objects.create(author=self.author1, email=self.email1)
