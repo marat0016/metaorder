@@ -6,8 +6,8 @@ from metaord.utils.auth import Groups
 
 
 def add_group_permissions(apps, schema_editor):
-    Groups.get_or_create_operator()
-    Groups.get_or_create_boss()
+    Groups.get_or_create_worker()
+    Groups.get_or_create_chief()
 
 
 class Migration(migrations.Migration):

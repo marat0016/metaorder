@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['kell18.pythonanywhere.com']
 
 INSTALLED_APPS = (
     'metaord',
+    'front',
     'chief',
     'worker',
     'django.contrib.admin',
@@ -96,12 +97,14 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = '/accounts/login' # todo: accounts
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+ACCOUNT_ADAPTER = 'front.adaptors.AccountAdapter'
 
 
 #debug_toolbar settings

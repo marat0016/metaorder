@@ -43,7 +43,7 @@ def register_operator_submit(request):
         operator = oper_form.save(commit=False)
         operator.user = user
         operator.save()
-        user.groups.add(Groups.get_or_create_operator())
+        user.groups.add(Groups.get_or_create_worker())
         return redirect('/')
     else:
         return render(request, 'registration/register_operator.html', {'user_form': user_form, 'oper_form': oper_form})

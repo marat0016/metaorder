@@ -4,9 +4,10 @@ from metaord import settings
 
 
 urlpatterns = [
+    url(r'^', include('front.urls')),
+    url(r'^chief/', include('chief.urls')),
+    url(r'^worker/', include('worker.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('chief.urls')),
-    url(r'', include('worker.urls')),
 ]
 
 if settings.DEBUG:

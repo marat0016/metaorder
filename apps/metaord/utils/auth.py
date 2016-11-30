@@ -6,20 +6,24 @@ from metaord.models import Order
 
 
 class Groups:
+    @staticmethod 
+    def is_user_chief(user):
+        return user.groups.filter(name='chief').exists()
+
     @staticmethod
-    def get_or_create_operator():
-        group, created = Group.objects.get_or_create(name='operator')
+    def get_or_create_worker():
+        group, created = Group.objects.get_or_create(name='worker')
         if created:
             group.permissions.add(Permissions.change_order_status())
             # logger.info('operator_user Group created')
         return group
 
     @staticmethod
-    def get_or_create_boss():
-        group, created = Group.objects.get_or_create(name='boss')
+    def get_or_create_chief():
+        group, created = Group.objects.get_or_create(name='chief')
         if created:
             group.permissions.add(Permissions.delete_orders(), Permissions.delete_operators())
-            # logger.info('boss Group created')
+            # logger.info('chief Group created')
         return group
         
 

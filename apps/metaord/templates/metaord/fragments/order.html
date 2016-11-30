@@ -1,0 +1,8 @@
+<div>
+    <p><b>Author:</b> {{ order.author }}</p>
+    <p><b>Posted on:</b> {{ order.post_date }}</p>
+    <p><b>Status:</b> {{ order.status }}</p>
+    <p><b>Text:</b></p>
+    <p>{{ order.text|linebreaksbr }}</p>
+    <p><a href="{% url 'orders_list' %}">Back to orders list</a></p>
+</div>

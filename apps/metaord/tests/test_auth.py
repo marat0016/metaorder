@@ -7,11 +7,11 @@ class AuthTestCase(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(username='u', email='a@b.ru')
-        self.user.groups.add(Groups.get_or_create_operator())
+        self.user.groups.add(Groups.get_or_create_worker())
 
-    def test_operatorGroupCreated(self):
+    def test_workerGroupCreated(self):
         self.assertTrue(self.user is not None)
 
-    def test_operatorGroupPermissions(self):
+    def test_workerGroupPermissions(self):
         has_perm = self.user.has_perm('metaord.change_order_status')
         self.assertTrue(has_perm)
