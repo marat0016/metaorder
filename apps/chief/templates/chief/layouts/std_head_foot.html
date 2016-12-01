@@ -2,11 +2,11 @@
 {% load staticfiles %}
 
 {% block header %}
-<div class="mb4">
+<div class="mb2">
     <h1><a href="/">Metaroder</a></h1>
     {% if user.is_authenticated %}
         <p>Hello boss-{{ user.first_name }}<small> (<a href="{% url 'logout' %}">Log out</a>)</small></p>
-        <p><a href="{% url 'worker:register_form' %}">Register new operator</a></p>
+        <p><a href="{% url 'worker:register' %}">Register new operator</a></p>
     {% endif %}
 </div>
 {% endblock header %}

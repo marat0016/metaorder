@@ -1,0 +1,16 @@
+{% extends 'chief/layouts/std_head_foot.html' %}
+
+{% block content %}
+<h3 class="mb2">Регистрация предпринемателя</h3>
+<form method="POST" action="{% url 'chief:register' %}" class="form-horizontal">
+    {% csrf_token %}
+    {% if form.errors %}
+        <p>{{ form.errors }}</p>
+    {% endif %}
+
+    {{ user_form.as_p }}
+    {{ chief_form.as_p }}
+    <button type="submit" class="btn btn-default">Зарегистрироваться</button>  
+</form>
+
+{% endblock %}

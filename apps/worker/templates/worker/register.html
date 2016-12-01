@@ -2,15 +2,11 @@
 
 {% block content %}
 
-{% if form.errors %}
-<!--{% for key, value in form.errors.items %}
-<p>{{ value }}</p>
-{% endfor %}-->
-{% endif %}
-
 <form method="POST" action="{% url 'worker:register_submit' %}" class="form-horizontal">
     {% csrf_token %}
-    <p>{{ form.errors }}</p>
+    {% if form.errors %}
+        <p>{{ form.errors }}</p>
+    {% endif %}
     {{ user_form.as_p }}
     {{ oper_form.as_p }}
     <button type="submit" class="btn btn-default">Зарегистрироваться</button>  

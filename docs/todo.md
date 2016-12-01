@@ -5,7 +5,9 @@
 - + Set test data automatically
 - + Fix order fragments
 - Make order
+- Make integrational tests
 - Make project
+- Make Worker
 - Some mark-up
 - Api
 
