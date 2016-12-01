@@ -1,11 +1,14 @@
+{% load urls_utils %}
+
 <h3>Orders:</h3>
 {% for order in orders %}
     <div class="mb4">
+        <p><b>ID:</b> {{ order.pk }}</p>
         <p><b>Author:</b> {{ order.author }}</p>
         <p><b>Posted on:</b> {{ order.post_date }}</p>
         <p><b>Status:</b> {{ order.status }}</p>
         <p><b>Text:</b></p>
         <p>{{ order.text|linebreaksbr }}</p>
-        <p><a href="{{ detail_url_pref }}/{{ order.pk }}">Read more</a></p>
+        <p><a href="{% namespaced_url app_name details_view_name pk=order.pk %}">Read more</a></p>
     </div>
 {% endfor %}

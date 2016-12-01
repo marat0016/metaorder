@@ -1,11 +1,11 @@
 {% extends 'worker/layouts/std_head_foot.html' %}
 
 {% block content %}
-    <form method="POST" action="{% url 'worker:order_upd_status' pk=pk %}">
+    <form method="POST" action="{% url 'chief:update' pk=pk %}">
         {% csrf_token %}
         <p>{{form.errors}}</p>
         {{ form.as_p }}      
         <input type="submit" value="Сохранить">
     </form>
-    <p><a href="{% url 'worker:orders_list' %}">Back to orders list</a></p>
+    <p><a href="{% url 'chief:orders' %}">Back to orders list</a></p>
 {% endblock content %}

@@ -1,0 +1,5 @@
+{% extends 'chief/layouts/std_head_foot.html' %}
+
+{% block content %}
+    {% include "metaord/fragments/orders_list.html" with orders=object_list detail_url_pref="/chief/orders" %}
+{% endblock content %}

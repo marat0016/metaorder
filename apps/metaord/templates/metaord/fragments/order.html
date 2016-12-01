@@ -1,9 +1,11 @@
+{% load urls_utils %}
+
 <div>
+    <p><b>ID:</b> {{ order.pk }}</p>
     <p><b>Author:</b> {{ order.author }}</p>
     <p><b>Posted on:</b> {{ order.post_date }}</p>
     <p><b>Status:</b> {{ order.status }}</p>
     <p><b>Text:</b></p>
     <p>{{ order.text|linebreaksbr }}</p>
-    <p><a href="{{ udp_status_pref }}/{{ order.pk }}">Редактировать</a></p>
-    <p><a href="{{ list_url }}">Back to orders list</a></p>
+    <p><a href="{% namespaced_url app_name edit_view_name pk=order.pk %}">Редактировать</a></p>
 </div>
