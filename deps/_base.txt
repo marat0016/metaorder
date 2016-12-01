@@ -4,6 +4,9 @@
 # Django
 django==1.10
 
+# Bootstrap templates utils
+django-bootstrap3
+
 ## Needed by the settings base module. Do not remove.
 # Unipath==0.2.1
 # dj-database-url
