@@ -1,11 +1,16 @@
 {% extends 'worker/layouts/std_head_foot.html' %}
+{% load bootstrap3 %}
 
 {% block content %}
-    <form method="POST" action="{% url 'chief:update' pk=pk %}">
+    <h3>Обновление заказа</h3>
+    <h4 class="mb2"><a href="{% url 'chief:orders' %}">К списку заказов</a></h4></p>
+    <form method="POST" action="{% url 'chief:order_upd' pk=pk %}" class="form-horizontal">
         {% csrf_token %}
-        <p>{{form.errors}}</p>
-        {{ form.as_p }}      
-        <input type="submit" value="Сохранить">
+        {% bootstrap_form form layout='horizontal' %}      
+        {% buttons %}
+            <div class="col-sm-offset-3 col-sm-10">
+                <button type="submit" class="btn btn-primary">Обновить</button>
+            </div>
+        {% endbuttons %}
     </form>
-    <p><a href="{% url 'chief:orders' %}">Back to orders list</a></p>
 {% endblock content %}

@@ -1,6 +1,6 @@
 # Info
 ## Models
-`Order(id, operator, webmaster, date, time, comment, amt, summ, addr, full_name, phone) + [post_track, post_stutus, ]`
+`Order(id, operator, date, time, comment, amt, summ, addr, full_name, phone) + [post_track, post_stutus, webmaster, ]`
 
 ## ?
 1. Какие данные нужны от оператора? ФИО, емаил, что ещё?

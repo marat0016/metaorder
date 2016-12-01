@@ -17,9 +17,10 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 login_url = reverse_lazy("login") # todo: front login and spec login
 
-@group_required('worker', 'chief', login_url=login_url)
-def index(request):
-    return render(request, 'worker/index.html', {})
+@class_decorator(group_required('worker', 'chief', login_url=login_url))
+class Index(ListView):
+    model = Order
+    template_name = 'worker/index.html'
 
 @class_decorator(group_required('worker', 'chief', login_url=login_url))
 class OrderList(ListView):

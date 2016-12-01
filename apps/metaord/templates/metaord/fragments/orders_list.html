@@ -1,14 +1,33 @@
 {% load urls_utils %}
 
 <h3>Orders:</h3>
-{% for order in orders %}
-    <div class="mb4">
-        <p><b>ID:</b> {{ order.pk }}</p>
-        <p><b>Author:</b> {{ order.author }}</p>
-        <p><b>Posted on:</b> {{ order.post_date }}</p>
-        <p><b>Status:</b> {{ order.status }}</p>
-        <p><b>Text:</b></p>
-        <p>{{ order.text|linebreaksbr }}</p>
-        <p><a href="{% namespaced_url app_name details_view_name pk=order.pk %}">Read more</a></p>
-    </div>
-{% endfor %}
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Автор</th> 
+        <th>Дата</th>
+        <th>Email</th>
+        <th>Комментарий</th>
+        <th>Статус</th>
+        <th></th>
+    </tr>
+    {% for order in orders %}
+        <tr>
+            <td>{{ order.pk }}</td>
+            <td>{{ order.author }}</td>
+            <td>{{ order.post_date }}</td>
+            <td>{{ order.email }}</td>
+            <td>{{ order.text|linebreaksbr }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+                {% if details_view_name %}
+                    <a href="{% namespaced_url app_name details_view_name pk=order.pk %}">Подробнее</a>
+                {% endif %}
+                {% if edit_view_name %}
+                    <a href="{% namespaced_url app_name edit_view_name pk=order.pk %}">{{ edit_msg|default:"Редактировать" }}</a>
+                {% endif %}
+            </td>
+
+        </tr>
+    {% endfor %}
+</table>

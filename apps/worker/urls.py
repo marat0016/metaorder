@@ -6,7 +6,7 @@ from metaord import views as meta_views
 
 app_name = "worker"
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.Index.as_view(), name='index'),
 
     url(r'^register/$', views.register_operator_form, name='register'),
     url(r'^register_submit/$', views.register_operator_submit, name='register_submit'),

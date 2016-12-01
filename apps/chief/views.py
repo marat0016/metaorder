@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, UpdateView
 from django.contrib import auth, messages
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_GET, require_POST
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils import timezone
 from metaord.forms import UserForm
@@ -24,6 +25,18 @@ def index(request):
 class OrderList(ListView):
     model = Order
     template_name = "chief/orders/orders.html"  # todo: chief/orders.html
+
+class OrderUpdate(SuccessMessageMixin, UpdateView):
+    model = Order
+    template_name = "chief/orders/update.html"
+    fields = "__all__"
+    success_url = reverse_lazy("chief:orders")
+    success_message = "Заказ успешно обновлён"
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderUpdate, self).get_context_data(**kwargs)
+        context["pk"] = self.kwargs["pk"] # todo(1.5): pass pk from urls as kwargs (TmplView) 
+        return context
 
 class RegistrationView(TemplateView):
     template_name = "chief/register.html"

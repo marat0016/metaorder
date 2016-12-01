@@ -12,10 +12,6 @@ class OrderCreate(CreateView):
     model = Order
     fields = "__all__"
 
-class OrderUpdate(UpdateView):
-    model = Order
-    fields = "__all__"
-
 class OrderDelete(DeleteView):
     model = Order
     success_url = '/deleted'

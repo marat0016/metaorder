@@ -4,6 +4,7 @@
 - + Defend views
 - + Set test data automatically
 - + Fix order fragments
+- + Some mark-up
 - Make order
 - Make integrational tests
 - Make project

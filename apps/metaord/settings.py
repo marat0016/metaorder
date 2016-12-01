@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'front',
     'chief',
     'worker',
+    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

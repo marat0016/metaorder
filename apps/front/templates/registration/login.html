@@ -1,28 +1,23 @@
 {% extends 'worker/layouts/std_head_foot.html' %}
+{% load bootstrap3 %}
 
 {% block content %}
 
-{% if form.errors %} 
-    {% for key, value in form.errors.items %}
-        <p>{{ value }}</p>
-    {% endfor %}
-{% endif %}
-
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-<table class="mb2">
-<tr>
-    <td>{{ form.username.label_tag }}</td>
-    <td>{{ form.username }}</td>
-</tr>
-<tr>
-    <td>{{ form.password.label_tag }}</td>
-    <td>{{ form.password }}</td>
-</tr>
-</table>
-
-<input type="submit" value="Login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+<h3 class="mb2">Вход</h3>
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" action="{% url 'login' %}" class="form-horizontal">
+            {% csrf_token %}
+            {% bootstrap_form form layout='horizontal' %}
+            {% buttons %}
+                <div class="col-sm-offset-3 col-sm-10">
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </div>
+            {% endbuttons %}
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+    <div class="col-md-6"></div>
+</div>
 
 {% endblock %}
