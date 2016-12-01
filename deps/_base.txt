@@ -5,7 +5,7 @@
 django==1.10
 
 # Bootstrap templates utils
-django-bootstrap3
+django-bootstrap3==7.1.0
 
 ## Needed by the settings base module. Do not remove.
 # Unipath==0.2.1

@@ -4,5 +4,5 @@
 # include the base requirements file
 -r _base.txt
 
-# for collectstatic. CARE, may not work!
-whitenoise
+# for collectstatic
+whitenoise==3.2.2

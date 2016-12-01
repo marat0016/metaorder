@@ -1,8 +1,9 @@
 # Metaorder CRM
 
 ### Setup
-- Make virtualenv - `python -m venv menv` and activate it - `./menv/Scripts/activate`
-- Install e.g. local deps - `pip install -r deps/local.txt`.
+- Make virtualenv - `python -m venv menv` win, `virtualenv --python=python3.4 menv`
+- activate it - `cd menv/Scripts/ & activate.bat & cd ../..` win, `source menv/bin/activate` lin
+- Install e.g. local deps - `pip install -r deps/local.txt`
 - Migrate DB - `python apps/manage.py migrate`
 - Run - `python apps/manage.py runserver`
 

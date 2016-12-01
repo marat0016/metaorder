@@ -4,8 +4,8 @@
 # include the base requirements file
 -r _base.txt
 
-django-debug-toolbar
-django-extensions
+django-debug-toolbar==1.6
+django-extensions==1.7.5
 
 # For easy deployments
 # Mb http://docs.fabfile.org/en/latest/ ?
@@ -13,5 +13,5 @@ django-extensions
 # fabric
 
 # For running tests
-coverage
+coverage==4.2
 django-discover-runner==0.4
