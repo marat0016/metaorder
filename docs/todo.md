@@ -1,9 +1,9 @@
 # TODO
 
-+ Test that user accept group
-+ Defend views
-+ Set test data automatically
-+ Fix order fragments
+- + Test that user accept group
+- + Defend views
+- + Set test data automatically
+- + Fix order fragments
 - Make order
 - Make project
 - Some mark-up
