@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% include "metaord/fragments/confirm_passw.html" with passw1="id_password" passw2="id_confirm_password" %}
+
 <h3 class="mb2">Регистрация предпринемателя</h3>
 <form method="POST" action="{% url 'chief:register' %}" class="form-horizontal">
     {% csrf_token %}

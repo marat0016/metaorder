@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, TemplateView, UpdateView
 from django.contrib import auth, messages
 from django.urls import reverse_lazy
+from django import forms
 from django.contrib.auth.models import User, Permission
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_GET, require_POST
@@ -13,6 +14,7 @@ from metaord.models import Order
 from metaord.utils.auth import Groups
 from metaord.utils.decorators import group_required, class_decorator
 from chief.forms import ChiefForm
+from functools import partial
 
 
 login_url = reverse_lazy("login")
@@ -26,6 +28,7 @@ class OrderList(ListView):
     model = Order
     template_name = "chief/orders/orders.html"  # todo: chief/orders.html
 
+DateInput = partial(forms.DateTimeField, {'class': 'datepicker'})
 class OrderUpdate(SuccessMessageMixin, UpdateView):
     model = Order
     template_name = "chief/orders/update.html"

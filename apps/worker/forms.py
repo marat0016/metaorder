@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from .models import Operator
-from metaord.models import Order
+from metaord.models import Order, STATUS_CHOICES
 
 
 class OperatorForm(forms.ModelForm):
@@ -11,4 +11,4 @@ class OperatorForm(forms.ModelForm):
         exclude = ['user']
 
 class OrderStatusForm(forms.Form):
-    new_status = forms.CharField(max_length=128)
+    new_status = forms.ChoiceField(choices=STATUS_CHOICES)

@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% include "metaord/fragments/confirm_passw.html" with passw1="id_password" passw2="id_confirm_password" %}
+
 <h3 class="mb2">Регистрация оператора</h3>
 <form method="POST" action="{% url 'worker:register_submit' %}" class="form-horizontal">
     {% csrf_token %}

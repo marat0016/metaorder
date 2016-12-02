@@ -2,6 +2,8 @@
 {% load bootstrap3 %}
 
 {% block content %}
+    {% include "metaord/fragments/appy_datapick.html" with selector="#id_post_date" %}
+
     <h3>Обновление заказа</h3>
     <h4 class="mb2"><a href="{% url 'chief:orders' %}">К списку заказов</a></h4></p>
     <form method="POST" action="{% url 'chief:order_upd' pk=pk %}" class="form-horizontal">

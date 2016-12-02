@@ -1,14 +1,28 @@
 from django.db import models
+from django import forms
 from django.utils import timezone
 from worker.models import Operator
 
+
+STATUS_CHOICES = [
+    ('NEW', 'Обработка'),
+    ('ACCEPTED', 'Принят'),
+    ('CANCELLED', 'Отменён'),
+    ('SENT', 'Отправлен'),
+    ('AWAIT_PAY', 'Ждёт оплаты'),
+    ('PAID', 'Оплачен'),
+    ('TRANSFER', 'Перевод'),
+    ('RETURN', 'Возврат'),
+    ('DUPLICATE', 'Дубликат'),
+    ('SPAM', 'Спам/ошибка'),
+]
 
 class Order(models.Model):
     author = models.CharField(max_length=512, blank=False)
     email = models.EmailField(blank=False)
     text = models.TextField()
     post_date = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=128)
+    status = models.CharField(max_length=128, choices=STATUS_CHOICES)
 
     def __str__(self):
         return 'author: `' + self.author + '`, text: `' + self.text + '`'

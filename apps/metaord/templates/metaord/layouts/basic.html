@@ -6,9 +6,19 @@
     <meta content="text/html" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">  
     <link rel="stylesheet" href="{% static 'css/metaord.css' %}" />
-    {% bootstrap_css %}
-    {% bootstrap_javascript %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-timepicker-addon.js"></script>    
+    <script src="https://cdn.jsdelivr.net/jquery.ui.timepicker.addon/1.4.5/jquery-ui-sliderAccess.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.4.5/i18n/jquery-ui-timepicker-ru.js"></script>
+    <script src="{% static 'js/datepicker-ru.js' %}"></script>   
+    
     {% block extra_head %}
     {% endblock %}
 </head>
@@ -16,7 +26,7 @@
 <div class="container mb8">
     <div class="row">
         <div class="col-md-12 django-msg">
-            <!-- todo: absolute popup block -->
+            <!-- todo: mb absolute popup block -->
             {% bootstrap_messages %}
         </div>
     </div>
@@ -36,8 +46,7 @@
 
 {% block footer %}
 {% endblock %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <script src="{% static 'js/metaord.js' %}"></script>
 {% block extra_scripts %}
 {% endblock %}

@@ -4,7 +4,7 @@
 {% block content %}
 
     <h3 class="mb2">Обновление статуса заказа</h3>
-    <h4 class="mb2"><a href="{% url 'worker:index' %}">К списку заказов</a></h4>
+    <h4 class="mb2"><a href="{% url 'worker:orders' %}">К списку заказов</a></h4>
     <form method="POST" action="{% url 'worker:order_upd_status' pk=pk %}" class="form-horizontal">
         {% csrf_token %}
         {% bootstrap_form form layout='horizontal' %}      

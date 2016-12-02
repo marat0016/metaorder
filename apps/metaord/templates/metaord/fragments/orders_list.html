@@ -1,6 +1,6 @@
 {% load urls_utils %}
 
-<h3>Orders:</h3>
+<h3 class="mb2">Список заказов:</h3>
 <table class="table table-striped">
     <tr>
         <th>ID</th>
@@ -18,7 +18,7 @@
             <td>{{ order.post_date }}</td>
             <td>{{ order.email }}</td>
             <td>{{ order.text|linebreaksbr }}</td>
-            <td>{{ order.status }}</td>
+            <td>{{ order.get_status_display }}</td>
             <td>
                 {% if details_view_name %}
                     <a href="{% namespaced_url app_name details_view_name pk=order.pk %}">Подробнее</a>
