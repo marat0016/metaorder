@@ -1,13 +1,9 @@
 {% extends 'metaord/layouts/basic.html' %}
 {% load staticfiles %}
+{% load html_filters %}
 
 {% block header %}
-<div class="mb2">
-    <h1><a href="/">Metaroder</a></h1>
-    {% if user.is_authenticated %}
-        <p>Hello {{ user.first_name }}<small> (<a href="{% url 'logout' %}">Log out</a>)</small></p>
-    {% endif %}
-</div>
+
 {% endblock header %}
 
 {% block footer %}

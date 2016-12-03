@@ -9,10 +9,11 @@
         - + passwd
         - + select
         - + datetime
+        - + navbars
 - Make order
     - Product
     - + Multiselect
-    - Group by Orders status
+    - + Group by Orders status
 - Make integrational tests
 - Make project
 - Make Chief

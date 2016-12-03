@@ -20,6 +20,10 @@ body {
 
 /* ------------------------------ metaord styles ------------------------------ */
 
+.p1 {
+  padding: 1vw;
+}
+
 .mb2 {
     margin-bottom: 2vw;
 }
@@ -30,4 +34,14 @@ body {
 
 .mb8 {
     margin-bottom: 8vw;
+}
+
+.dropdown-menu>li>span {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
 }

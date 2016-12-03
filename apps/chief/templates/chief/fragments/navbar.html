@@ -1,14 +1,4 @@
-{% extends 'metaord/layouts/basic.html' %}
-{% load staticfiles %}
-
-{% block title %}Worker pages{% endblock title %}
-
-{% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/worker.css' %}" />
-{% endblock extra_head %}
-
-{% block header %}
-<!-- Static worker navbar -->
+<!-- Static cheif navbar -->
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
     <div class="navbar-header">
@@ -22,8 +12,9 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-left">
-            <li><a href="{% url 'worker:index' %}">Проекты</a></li>
-            <li><a href="{% url 'worker:orders' %}">Заказы</a></li>
+            <li><a href="{% url 'chief:index' %}">Домашняя</a></li>
+            <li><a href="{% url 'chief:index' %}">Проекты</a></li>
+            <li><a href="{% url 'chief:orders' %}">Заказы</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -31,9 +22,8 @@
                     Аккаунт <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{% url 'worker:register' %}">Зарегистрировать нового оператора</a></li>
-                    <li><a href="{% url 'worker:index' %}">Предложения</a></li>
-                    <li><a href="{% url 'worker:orders' %}">Заказы</a></li>
                     <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Вы вошли как <b>{{ user.first_name }} {{ user.last_name }}</b></li>
                     <li><a href="{% url 'logout' %}">Выход</a></li>
                 </ul>
             </li>
@@ -41,16 +31,3 @@
     </div><!--/.nav-collapse -->
     </div>
 </nav>
-{% endblock header %}
-
-{% block footer %}
-<footer class="footer">
-    <div class="container">
-        <h3>Metaorder CRM {% now "Y" %}</h3>
-    </div>
-</footer>
-{% endblock footer %}
-
-{% block extra_scripts %}
-    <script src="{% static 'js/worker.js' %}"></script>
-{% endblock extra_scripts %}

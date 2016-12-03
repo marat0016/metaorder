@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
+{% load html_filters %}
 <html>
 <head>
     <title>{% block title %}Metaorder CRM{% endblock %}</title>
@@ -23,6 +24,16 @@
     {% endblock %}
 </head>
 <body>
+{% block header %}
+    {% if user|has_group:"chief" %}
+        {% include "chief/fragments/navbar.html" %}
+    {% elif user|has_group:"worker" %}
+        {% include "worker/fragments/navbar.html" %}
+    {% else %}
+        {% include "front/fragments/navbar.html" %}
+    {% endif %}
+{% endblock %}
+
 <div class="container mb8">
     <div class="row">
         <div class="col-md-12 django-msg">
@@ -31,20 +42,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            {% block header %}
-            {% endblock %}
-        </div>
-    </div>
-    <div class="row">
         <div class="col-md-12 content">
             {% block content %}
+                <h2>Welcome to Metaorder!</h2>
             {% endblock %}
         </div>
     </div>
 </div>
 
 {% block footer %}
+<footer class="footer">
+    <div class="container">
+        <h3>Metaorder CRM {% now "Y" %}</h3>
+    </div>
+</footer>
 {% endblock %}
 
 <script src="{% static 'js/metaord.js' %}"></script>

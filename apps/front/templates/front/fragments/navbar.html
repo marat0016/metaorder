@@ -1,0 +1,75 @@
+{% load html_filters %}
+<!-- Static front navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Metaorder</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user|has_group:"chief" %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Предпринемателям<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'chief:index' %}">Домашняя</a></li>
+                        <li><a href="{% url 'chief:index' %}">Проекты</a></li>
+                        <li><a href="{% url 'chief:orders' %}">Заказы</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><span>Вы вошли как <b>{{ user.first_name }} {{ user.last_name }}</b></span></li>
+                        <li><a href="{% url 'logout' %}">Выход</a></li>
+                    </ul>
+                </li>
+            {% elif user|has_group:"worker" %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Оперторам<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'worker:index' %}">Домашняя</a></li>
+                        <li><a href="{% url 'worker:index' %}">Проекты</a></li>
+                        <li><a href="{% url 'worker:orders' %}">Заказы</a></li>
+                        <li role="separator" class="divider"></li>                        
+                        <li><span>Вы вошли как <b>{{ user.first_name }} {{ user.last_name }}</b></span></li>
+                        <li><a href="{% url 'logout' %}">Выход</a></li>
+                    </ul>
+                </li>
+            {% else %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Предпринемателям<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{% url 'chief:index' %}">Домашняя</a></li>
+                    <li><a href="{% url 'chief:index' %}">Проекты</a></li>
+                    <li><a href="{% url 'chief:orders' %}">Заказы</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'login' %}">Вход</a></li>
+                    <li><a href="{% url 'chief:register' %}">Регистрация</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Оперторам<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{% url 'worker:index' %}">Домашняя</a></li>
+                    <li><a href="{% url 'worker:index' %}">Проекты</a></li>
+                    <li><a href="{% url 'worker:orders' %}">Заказы</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'login' %}">Вход</a></li>
+                    <li><a href="{% url 'worker:register' %}">Регистрация</a></li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </div><!--/.nav-collapse -->
+    </div>
+</nav>
