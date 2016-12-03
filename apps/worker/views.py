@@ -57,7 +57,6 @@ class OrderUpdate(SuccessMessageMixin, FormView):
 def register_operator_form(request):
     user_form = UserForm()
     oper_form = OperatorForm()
-    print ('dgfkml,;mnbfyguhyijokm')
     return render(request, 'worker/register.html', {'user_form': user_form, 'oper_form': oper_form})
 
 @require_POST

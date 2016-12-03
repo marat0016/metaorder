@@ -10,7 +10,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.utils import timezone
 from metaord.forms import UserForm
-from metaord.models import Order
+from metaord.models import Order, STATUS_CHOICES_AND_CLASS
+from metaord.utils.view import ExtraListView
 from metaord.utils.auth import Groups
 from metaord.utils.decorators import group_required, class_decorator
 from chief.forms import ChiefForm
@@ -24,9 +25,23 @@ def index(request):
     return render(request, "chief/index.html", {})
 
 @class_decorator(group_required("chief", login_url=login_url))
-class OrderList(ListView):
+class OrderList(ExtraListView):
     model = Order
+    extra_context = {"statuses": STATUS_CHOICES_AND_CLASS, "status": None}
     template_name = "chief/orders/orders.html"  # todo: chief/orders.html
+
+    def get_context_data(self, **kwargs):
+        context = super(OrderList, self).get_context_data(**kwargs)
+        self.extra_context["status"] = self.request.GET.get('status')
+        context.update(self.extra_context)
+        return context
+
+    def get_queryset(self):
+        status = self.request.GET.get('status')
+        if status is None:
+            return Order.objects.all()  
+        else: 
+            return Order.objects.filter(status=status)
 
 DateInput = partial(forms.DateTimeField, {'class': 'datepicker'})
 class OrderUpdate(SuccessMessageMixin, UpdateView):
@@ -36,7 +51,7 @@ class OrderUpdate(SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy("chief:orders")
     success_message = "Заказ успешно обновлён"
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs): # todo: use ExtraView
         context = super(OrderUpdate, self).get_context_data(**kwargs)
         context["pk"] = self.kwargs["pk"] # todo(1.5): pass pk from urls as kwargs (TmplView) 
         return context

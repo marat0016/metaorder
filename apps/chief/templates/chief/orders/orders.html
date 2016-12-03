@@ -1,5 +1,22 @@
 {% extends 'chief/layouts/std_head_foot.html' %}
 
 {% block content %}
-    {% include "metaord/fragments/orders_list.html" with orders=object_list app_name="chief" edit_view_name="order_upd" %}
+<div class="row">
+    <div class="col-md-12">
+        <h3>Заказы по тегам</h3>
+        <div class="row">
+            <div class="col-md-12"><h4>
+                <a href="{% url 'chief:orders' %}" class="label label-info">Все</a>
+                {% for status in statuses %}
+                    <a href="?status={{ status.0 }}" class="label {{ status.2 }}">{{ status.1 }}</a>
+                {% endfor %}  
+            </h4></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        {% include "metaord/fragments/orders_list.html" with orders=object_list app_name="chief" edit_view_name="order_upd" %}
+    </div>
+</div>    
 {% endblock content %}

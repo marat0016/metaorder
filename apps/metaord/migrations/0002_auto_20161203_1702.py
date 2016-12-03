@@ -22,8 +22,8 @@ def add_group_permissions(apps, schema_editor):
         t3.is_staff = True
         t3.save()
 
-        Order.objects.create(author='test1', email='a@b.ru', text='testing1')
-        Order.objects.create(author='test2', email='b@c.ru', text='testing2')
+        Order.objects.create(author='test1', email='a@b.ru', text='testing1', status=2)
+        Order.objects.create(author='test2', email='b@c.ru', text='testing2', status=6)
 
 
 class Migration(migrations.Migration):

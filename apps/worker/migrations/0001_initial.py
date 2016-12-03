@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
             name='Operator',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('work_time', models.DurationField()),
+                ('work_time', models.DurationField(verbose_name="Время работы")),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
